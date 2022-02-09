@@ -47,5 +47,3 @@ public class Planet {
         return super.toString();
     }
 }
-
-//pdf skip 1
