@@ -4,6 +4,7 @@ public class Circle extends TwoDShape {
     public final double PI = Math.PI;
     private double radius;
 
+    //Note: Changed constructor to public in order to allow CircleTest to access it for testing
     public Circle(double radius, Colour colour){
         super(colour);
         this.radius = radius;
