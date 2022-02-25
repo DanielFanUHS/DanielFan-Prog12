@@ -1,4 +1,4 @@
-import com.danielfan.module1._4.Triangle;s
+import com.danielfan.module1._4.Triangle;
 import com.danielfan.module1._4.Colour;
 import org.junit.Test;
 
