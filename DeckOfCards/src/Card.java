@@ -1,4 +1,5 @@
 import java.util.Objects;
+//abstract class card, with comparable method
 
 public abstract class Card implements Comparable<Card>{
     Suit suit;
