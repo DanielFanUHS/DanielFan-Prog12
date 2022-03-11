@@ -26,5 +26,9 @@ public class Main {
         //use strings not char(more method)
         //in constructor create a map with key mapped to shifted value
 
+        private static void(){
+
+        }
+
     }
 }
