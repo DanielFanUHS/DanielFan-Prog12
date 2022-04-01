@@ -9,8 +9,9 @@ public class Main {
         Scanner scanner = new Scanner(new File("illiad.txt"));
 
         while(scanner.hasNext()){
-            //remove all characters(eg. punctuation) besides letters and numbers -> lowercase
-            String word = scanner.next().replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            //remove all characters(eg. punctuation) besides letters -> lowercase
+            String word = scanner.next().replaceAll("[^a-zA-Z]", "").toLowerCase();
+            //do not count single letters as words, except for a and i
             if (word.length() > 1 || word == "a" || word == "i"){
                 words.add(word);
             }
@@ -18,14 +19,5 @@ public class Main {
 
         //System.out.println(words);
         System.out.println(words.size() + " unique words");
-        // one map z
-        //second map
-        //use strings not char(more method)
-        //in constructor create a map with key mapped to shifted value
-
     }
 }
-
-
-
-
