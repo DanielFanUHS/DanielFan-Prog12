@@ -11,7 +11,8 @@ public class Main {
         while(scanner.hasNext()){
             //remove all characters(eg. punctuation) besides letters -> lowercase
             String word = scanner.next().replaceAll("[^a-zA-Z]", "").toLowerCase();
-            //do not count single letters as words, except for a and i
+
+            //filter words: do not count single letters as words, except for words a and i
             if (word.length() > 1 || word == "a" || word == "i"){
                 words.add(word);
             }
