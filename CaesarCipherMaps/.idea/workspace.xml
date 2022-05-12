@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1-StudyHelper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Module3.3Graphs" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -63,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649278617551</updated>
       <workItem from="1649278618751" duration="3836000" />
+      <workItem from="1649366223498" duration="1093000" />
     </task>
     <servers />
   </component>
