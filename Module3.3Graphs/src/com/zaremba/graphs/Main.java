@@ -12,11 +12,15 @@ public class Main {
         BFS();
     }
 
-    private static void BFS() {
+    private static void BFS(int startNode, int endNode) {
         ArrayList<Node> queue = new ArrayList<>();
         queue.add(graph.get(0));
-        while(queue.size() != 0){
-            queue.add(graph.stream().filter(int))
+        Node currentKey = queue.get(0);
+        for (Integer node :
+                currentKey.getNodes()) {
+            if(!queue.contains(node)){
+                queue.add(graph.node);
+            }
         }
     }
 

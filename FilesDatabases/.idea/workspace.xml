@@ -30,12 +30,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="derby" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Module3.3Graphs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="database.data.views" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -60,10 +63,22 @@
       <option name="presentableId" value="Default" />
       <updated>1652217183804</updated>
       <workItem from="1652217185180" duration="1335000" />
+      <workItem from="1652389265542" duration="7000" />
+      <workItem from="1652735588728" duration="2515000" />
+      <workItem from="1652820529712" duration="2787000" />
+      <workItem from="1652906848461" duration="547000" />
+      <workItem from="1652907408624" duration="1906000" />
+      <workItem from="1652995145364" duration="2025000" />
+      <workItem from="1653425337071" duration="3061000" />
+      <workItem from="1654030091608" duration="3244000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
