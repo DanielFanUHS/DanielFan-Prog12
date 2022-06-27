@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.*;
 import flanagan.io.*;
 import java.awt.Image;
+import java.util.Random;
 
 
 public class Gridder extends javax.swing.JFrame 
@@ -677,50 +678,154 @@ public class Gridder extends javax.swing.JFrame
             timmy.setDelay(stepDelay);
     }//GEN-LAST:event_jSliderDelayStateChanged
 
+    // Colour 100 random squares white
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("1");
+        Random rand = new Random();
+        for (int i = 0; i < 100; i++) {
+            int x = rand.nextInt(100);
+            int y = rand.nextInt(100);
+            grid[x][y] = 1;
+        }
         draw();
+        System.out.println("1");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    // Colour a random column white
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Random rand = new Random();
+        int col = rand.nextInt(100);
+        for (int row = 0; row < 100; row++) {
+            grid[col][row] = 1;
+        }
+        draw();
         System.out.println("2");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // Colour the top half of grid white and the bottom half of the grid black
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("3");
+        clearGrid();
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 50; y++) {
+                grid[x][y] = 1;
+            }
+            for (int y = 50; y < 100; y++) {
+                grid[x][y] = 0;
+            }
+        }
         draw();
+        System.out.println("3");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
-
+    // Count the number of white squares shown on the grid
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        int whiteCount = 0;
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 100; y++) {
+                if(grid[x][y] == 1){
+                    whiteCount++;
+                }
+            }
+        }
+        textInfo.setText("# of white squares: " + whiteCount);
         System.out.println("4");
-
-        draw();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    // Clear then draw a white X on a black background across the grid
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        clearGrid();
+        for (int i = 0; i < 100; i++) {
+            grid[i][i] = 1; // draw line "\"
+            grid[i][99-i] = 1; // invert y to draw line "/"
+        }
+        draw();
         System.out.println("5");
-
-        draw();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    // Invert all colours on grid
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 100; y++) {
+                if(grid[x][y] == 1){
+                    grid[x][y] = 0;
+                } else if (grid[x][y] == 0) {
+                    grid[x][y] = 1;
+                }
+            }
+        }
+        draw();
         System.out.println("6");
-
-        draw();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    // Turn black squares which touch 2 white squares into white squares
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        int[][] temp = new int[100][100];
+
+        for (int row = 0; row < 100; row++) {
+            for (int col = 0; col < 100; col++) {
+                temp[col][row] = grid[col][row];
+            }
+        }
+
+        for (int row = 0; row < 100; row++) {
+            for (int col = 0; col < 100; col++) {
+                if(grid[col][row] == 0){ // only test squares that were black
+                    int touchingSquares = 0;
+                    if (row != 0 && grid[col][row - 1] == 1) { //check above, excluding edges
+                        touchingSquares++;
+                    }
+
+                    if (row != 99 && grid[col][row + 1] == 1){ //check below, excluding edges
+                        touchingSquares++;
+                    }
+                    if (col != 0 && grid[col - 1][row] == 1) { //check left, excluding edges
+                        touchingSquares++;
+                    }
+                    if (col != 99 && grid[col + 1][row] == 1) { //check right, excluding edges
+                        touchingSquares++;
+                    }
+                    if(touchingSquares == 2){
+                        temp[col][row] = 1; // make the square white if it is touching 2 white squares
+                    }
+                }
+            }
+
+        }
+        grid = temp;
+        draw();
         System.out.println("7");
-
-        draw();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    // Scroll 1 square left, and wrap around overflow
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        int[][] temp = new int[100][100];
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 100; y++) {
+                if(x == 0){ // catch the case of the first column that gets wrapped around to the last column
+                    temp[99][y] = grid[0][y];
+                }
+                else{
+                    temp[x-1][y] = grid[x][y]; //move one to the left
+                }
+            }
+        }
+        grid = temp;
+        draw();
         System.out.println("8");
-
-        draw();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    // Rotate 90 degrees right
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        System.out.println("9");
+        int[][] temp = new int[100][100];
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 100; y++) {
+                temp[99-y][x] = grid[x][y]; // swap x and y and invert resulting x to rotate 90 right
+            }
+        }
+        grid = temp;
 
         draw();
+        System.out.println("9");
     }//GEN-LAST:event_jButton11ActionPerformed
 
 
@@ -783,13 +888,3 @@ public class Gridder extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 
 } //end of class
-
-//add directory, scan files, add to database, then retrieve data
-//only one table for inserting the directory, no need for sub directory
-//broken up to name, path and extension
-//give a directory, will list all the files into a database
-//okay in console
-
-//something something maven derby 3 dependencies
-//scope complier
-//derby shared dependency
